@@ -15,7 +15,7 @@ public class UserMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_main);
         calendarBtn = (Button)findViewById(R.id.userCalendar);
-        final Intent i = new Intent(this, Calendar.class);
+        final Intent i = new Intent(this, myCalendar.class);
         calendarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
