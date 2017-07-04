@@ -1,10 +1,15 @@
 package com.summercodingproject.bookit;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+
+    Button userMainBtn;
+
 
     // Used to load the 'native-lib' library on application startup.
     static {
@@ -15,10 +20,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Example of a call to a native method
-        TextView tv = (TextView) findViewById(R.id.sample_text);
-        //tv.setText(stringFromJNI());
+        userMainBtn = (Button)findViewById(R.id.userMainBtn);
+        final Intent i = new Intent(this, UserMain.class);
+        userMainBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.this.startActivityForResult(i,100);
+            }
+        });
     }
 
     /**
