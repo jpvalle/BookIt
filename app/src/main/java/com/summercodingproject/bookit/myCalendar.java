@@ -1,43 +1,36 @@
 package com.summercodingproject.bookit;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.DatePicker;
-import android.widget.Toast;
+import android.widget.Button;
 
 import java.util.Calendar;
 
 public class myCalendar extends AppCompatActivity {
 
-    DatePicker dp;
-    Calendar myCalendar;
-    Context context;
+    Button dp;
+    Calendar calendar;
+    int curDay;
+    int curMonth;
+    int curYear;
+    int selDay;
+    int selMonth;
+    int selYear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        calendar = Calendar.getInstance();
+        curDay = calendar.get(Calendar.DAY_OF_MONTH);
+        curMonth = calendar.get(Calendar.MONTH);
+        curYear = calendar.get(Calendar.YEAR);
+        String curDate = String.format("%d/%d/%d",curMonth,curDay,curYear);
+
         setContentView(R.layout.activity_calendar);
-        context = this;
-        dp = (DatePicker)findViewById(R.id.datePicker);
-        setUpCalendar();
+        dp = (Button) findViewById(R.id.datePicker);
+        dp.setText(curDate);
+        dp.setTextSize(80);
+        dp.setBackgroundColor(500);
     }
 
-    private void setUpCalendar() {
-        myCalendar = myCalendar.getInstance();
-        int today = myCalendar.get(Calendar.DAY_OF_MONTH);
-        dp.setMinDate(today);
-
-        int cutoff = today + 180;
-
-        dp.setMaxDate(cutoff);
-
-        dp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context,"CALENDAR TOUCHED",Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 }
