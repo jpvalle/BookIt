@@ -45,6 +45,8 @@ public class myCalendar extends AppCompatActivity {
         dp.setBackgroundColor(Color.DKGRAY);
         dp.setTextColor(Color.WHITE);
 
+
+
         //dp.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
 
         dpickerListener = new DatePickerDialog.OnDateSetListener() {
